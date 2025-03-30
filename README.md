@@ -1,10 +1,12 @@
-# Desafio de lógica de programação.
+# Desafio de Lógica de Programação
 
-A classe [GerenciadorEstoque.cs](https://github.com/grupokyly/TesteDeveloper/blob/master/TesteDeveloper/GerenciadorEstoque.cs) não está completa. 
-Precisamos implementar a lógica para alguns métodos de nossa classe de gestão do estoque. Veja os requisitos abaixo:
+A classe [GerenciadorEstoque.cs](https://github.com/ErickGabrielS/Teste_Developer/blob/master/TesteDeveloper/GerenciadorEstoque.cs) foi atualizada com a implementação dos métodos pendentes. Veja abaixo a descrição e a funcionalidade de cada um:
 
-- [GetSaldo(string referencia)](https://github.com/grupokyly/TesteDeveloper/blob/master/TesteDeveloper/GerenciadorEstoque.cs#L42) - Esse método deve retornar o saldo de estoque da referência
- ```cs
+## Implementações realizadas:
+
+### [GetSaldo(string referencia)](https://github.com/ErickGabrielS/Teste_Developer/blob/master/TesteDeveloper/GerenciadorEstoque.cs#L41)
+Este método retorna o saldo de estoque de uma referência específica.
+```csharp
         /// <summary>
         /// Buscar saldo de estoque da referência
         /// </summary>
@@ -12,14 +14,14 @@ Precisamos implementar a lógica para alguns métodos de nossa classe de gestão
         /// <returns>Saldo de estoque</returns>
         public int GetSaldo(string referencia)
         {
-            //TODO - Implemente sua lógica para buscar e retornar o estoque da referência
-            //Dica: Os estoques estão na lista _estoques inicializada no construtor
+            var produto = _estoques.FirstOrDefault(e => e.Referencia == referencia);
+            return produto?.SaldoEstoque ?? 0;
         }
 ```
 
-
-- [EstoqueDisponivel(string referencia, int quantidadeRequerida)](https://github.com/grupokyly/TesteDeveloper/blob/master/TesteDeveloper/GerenciadorEstoque.cs#L31) - Esse método deve retornar verdadeiro se há estoque suficiente para atender a quantidade requerida para referência e falso quando a quantidade de estoque for insuficiente.
-```cs
+### [EstoqueDisponivel(string referencia, int quantidadeRequerida)](https://github.com/ErickGabrielS/Teste_Developer/blob/master/TesteDeveloper/GerenciadorEstoque.cs#L30)
+Este método verifica se há estoque suficiente para atender à quantidade requerida de uma referência.
+```csharp
         /// <summary>
         /// Verifica se a quantidade requerida existe no estoque da referência
         /// </summary>
@@ -28,32 +30,30 @@ Precisamos implementar a lógica para alguns métodos de nossa classe de gestão
         /// <returns>Indica se a quantidade requerida existe ou não no estoque</returns>
         public bool EstoqueDisponivel(string referencia, int quantidadeRequerida)
         {
-            //TODO - Implemente sua lógica para validar o estoque da referência contra a quantidade requerida
-            //Dica: Os estoques estão na lista _estoques inicializada no construtor
+            var produto = _estoques.FirstOrDefault(e => e.Referencia == referencia);
+            return produto != null && produto.SaldoEstoque >= quantidadeRequerida;
         }
 ```
 
-- [ToString()](https://github.com/grupokyly/TesteDeveloper/blob/master/TesteDeveloper/GerenciadorEstoque.cs#L57) - Esse método deve retornar uma string com o extrato do estoque
-```cs
+### [ToString()](https://github.com/ErickGabrielS/Teste_Developer/blob/master/TesteDeveloper/GerenciadorEstoque.cs#L56)
+Este método retorna uma string formatada com o extrato do estoque, listando todas as referências e seus saldos.
+```csharp
         /// <summary>
         /// Gera string com os estoques no formato [Referência: {Referencia} Saldo: {SaldoEstoque}] com uma linha para cada referência
-        /// Ex: 
+        /// Ex:
         /// Referência: A345 Saldo: 98
         /// Referência: B456 Saldo: 15
-        /// 
         /// </summary>
         /// <returns>String formatada</returns>
         public override string ToString()
         {
-            //TODO - Implemente sua lógica para formatar uma string no formato esperado
-            //Dica: Os estoques estão na lista _estoques inicializada no construtor
+            return string.Join("\n", _estoques.Select(e => $"Referência: {e.Referencia} Saldo: {e.SaldoEstoque}"));
         }
 ```
 
-<hr/>
+---
 
-A implementação deve ser feita na linguagem C#. Para o projeto foi utilizado o [dotnetcore 3.1](https://dotnet.microsoft.com/download)
+### Tecnologias utilizadas
+A implementação foi feita em **C#**, utilizando **.NET Core 3.1**.
+Para executar o projeto, certifique-se de ter o [.NET Core SDK 3.1](https://dotnet.microsoft.com/download) instalado em sua máquina.
 
-Clone ou faça download deste repositório e envie a implementação para [rafael@grupokyly.com.br](mailto:rafael@grupokyly.com.br?subject=Teste%20Developer%20Grupo%20Kyly). 
-
-Pode enviar o link do seu próprio repositório (Deixe o repositório público) ou o arquivo compactado com a implementação.
