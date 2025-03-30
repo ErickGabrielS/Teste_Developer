@@ -21,7 +21,7 @@ namespace Teste_Developer
             GerenciadorEstoque gerenciadorEstoque = new GerenciadorEstoque(estoqueProdutos);
 
             //Verifica disponível da referência A2342 para uma retirada de 10 unidades
-            var estoqueDisponivel = gerenciadorEstoque.EstoqueDisponivel("A2342", 11);
+            var estoqueDisponivel = gerenciadorEstoque.EstoqueDisponivel("A2342", 10);
             Console.WriteLine($"Estoque disponível: {estoqueDisponivel}");
 
             //Busca saldo de estoque da referência A2342
