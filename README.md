@@ -1,4 +1,4 @@
-# Desafio de Lógica de Programação
+# Desafio de Lógica de Programação Implementado
 
 A classe [GerenciadorEstoque.cs](https://github.com/ErickGabrielS/Teste_Developer/blob/master/TesteDeveloper/GerenciadorEstoque.cs) foi atualizada com a implementação dos métodos pendentes. Veja abaixo a descrição e a funcionalidade de cada um:
 
